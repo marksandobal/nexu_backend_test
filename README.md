@@ -21,25 +21,25 @@ The following features are required to run the project locally:
 * How to run the test suite
   * To Run all Test
 
-  `bundle exec rspec`
+     `bundle exec rspec`
 
   * To Run test with a specified file
-  `bundle exec rspec spec/custom_folder/custom_file_spec.rb`
+    `bundle exec rspec spec/custom_folder/custom_file_spec.rb`
 
   * To Run test with a specified line
-  `bundle exec rspec spec/custom_folder/custom_file_spec.rb:12`
+    `bundle exec rspec spec/custom_folder/custom_file_spec.rb:12`
 
 * To Run Project
-  `rails s` or `bundle exec rails server`
+   `rails s` or `bundle exec rails server`
 
   To run Project with network ip
-  `rails s -b 0.0.0.0`
+   `rails s -b 0.0.0.0`
 
   for example:
-  `rails s -b 192.168.1.100`
+   `rails s -b 192.168.1.100`
 
 * To Run Brakeman
-  `bundle exec brakeman -z`
+   `bundle exec brakeman -z`
 
 # Note
 
@@ -51,7 +51,10 @@ The project was carried out with an architecture that can be readable without th
 - The repository sends the request to the model.
 - The model sends the request to the database.
 
-We try to apply the first SOLID principle: __Single Responsibility Principle__, In which each element that consolidates a process has the sole responsibility of doing what corresponds to it, who works together with the delegator design pattern
+We try to apply the first SOLID principle: __Single Responsibility Principle__, In which each element that consolidates a process has the sole responsibility of doing what corresponds to it, who works together with the delegator design pattern.
+
+You can find a guide on how to structure the architecture of your project in the following blog.
+https://www.nopio.com/blog/how-to-organize-large-rails-applications/
 
 ## API Versioning
 
