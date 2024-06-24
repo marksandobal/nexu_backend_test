@@ -9,7 +9,7 @@ RSpec.describe Api::V1::ModelsController, type: :request do
       let!(:model) { create(:model) }
 
       it 'return models' do
-        get "/api/brands/#{model.brand_id}/models", headers: valid_headers
+        get "/api/models", headers: valid_headers
 
         json_body = JSON.parse(response.body)
 
@@ -27,7 +27,7 @@ RSpec.describe Api::V1::ModelsController, type: :request do
         json_body = JSON.parse(response.body)
 
         expect(response).to have_http_status(:not_found)
-        expect(json_body['errors']).to eq("Couldn't find Brand with 'id'=82828282")
+        expect(json_body['errors']).to eq("Brand not found")
       end
     end
   end
@@ -83,7 +83,7 @@ RSpec.describe Api::V1::ModelsController, type: :request do
       let!(:model) { create(:model, name: 'MAZDA 2', average_price: 100_000) }
 
       it 'return model updated' do
-        put "/api/brands/#{model.brand_id}/models/#{model.id}", params: { model: { average_price: 150_000 } },
+        put "/api/models/#{model.id}", params: { model: { average_price: 150_000 } },
           headers: valid_headers
 
         json_body = JSON.parse(response.body)
@@ -93,26 +93,11 @@ RSpec.describe Api::V1::ModelsController, type: :request do
       end
     end
 
-    context 'When brand not exist' do
-      let!(:model) { create(:model, name: 'MAZDA 2', average_price: 100_000) }
-
-      it 'return error' do
-        put "/api/brands/82828282/models/#{model.id}", params: { model: { average_price: 150_000 } },
-          headers: valid_headers
-
-        json_body = JSON.parse(response.body)
-
-        expect(response).to have_http_status(:unprocessable_content)
-        expect(json_body['errors']['code']).to eq(404)
-        expect(json_body['errors']['message']).to eq("Couldn't find Brand with 'id'=82828282")
-      end
-    end
-
     context 'When model not exist' do
       let!(:brand) { create(:brand) }
 
       it 'return error' do
-        put "/api/brands/#{brand.id}/models/82828282", params: { model: { average_price: 150_000 } },
+        put "/api/models/82828282", params: { model: { average_price: 150_000 } },
           headers: valid_headers
 
         json_body = JSON.parse(response.body)

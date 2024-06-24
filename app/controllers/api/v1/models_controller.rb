@@ -1,10 +1,17 @@
 module Api
   module V1
     class ModelsController < ApplicationController
-      before_action :set_brand, only: [:index]
-
       def index
-        models = Filter.new(params, Model).apply(@brand.models)
+        if params[:brand_id].present?
+          brand = set_brand
+          render json: { errors: 'Brand not found' },
+            status: :not_found and return if brand.blank?
+
+          models = Filter.new(params, Model).apply(brand.models)
+        else
+          models = Filter.new(params, Model).apply
+        end
+
         render json: models, each_serializer: Api::V1::ModelSerializer, status: :ok
       end
 
@@ -40,14 +47,11 @@ module Api
       end
 
       def update_params
-        model_params.merge(brand_id: params[:brand_id], model_id: params[:id])
+        model_params.merge(model_id: params[:id])
       end
 
       def set_brand
-        @brand = Brand.find(params[:brand_id])
-
-      rescue ActiveRecord::RecordNotFound => error
-        render json: { errors: error.message }, status: :not_found
+        Brand.find_by(id: params[:brand_id])
       end
     end
   end
