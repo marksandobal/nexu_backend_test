@@ -13,10 +13,10 @@ The following features are required to run the project locally:
 ## Configuration
 
 * Database creation
-  `bundle install`
-  `rails db:create`
-  `rails db:migrate`
-  `rails db:seed`
+ 1. `bundle install`
+ 2. `rails db:create`
+ 3. `rails db:migrate`
+ 4. `rails db:seed`
 
 * How to run the test suite
   * To Run all Test
