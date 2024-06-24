@@ -24,22 +24,35 @@ The following features are required to run the project locally:
      `bundle exec rspec`
 
   * To Run test with a specified file
+    
     `bundle exec rspec spec/custom_folder/custom_file_spec.rb`
 
   * To Run test with a specified line
+    
     `bundle exec rspec spec/custom_folder/custom_file_spec.rb:12`
 
 * To Run Project
+
    `rails s` or `bundle exec rails server`
 
   To run Project with network ip
+  
    `rails s -b 0.0.0.0`
 
   for example:
+  
    `rails s -b 192.168.1.100`
 
 * To Run Brakeman
+  
    `bundle exec brakeman -z`
+
+# instruction for use
+The api is open without a token or session, but the following vendor must be included in the request headers, otherwise you will receive a non-existent route error.
+
+`Accept: application/vnd.nexu-backend-api.v1+json`
+
+If you consume the endpoint from postman, you have to add the vendor in the postman headers
 
 # Note
 
