@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   namespace :api do
     scope module: :v1, constraints: ApiVersionConstraint.new(version: 1) do
       resources :brands, only: [:index, :create] do
-        resources :models, on: :member, only: [:index, :create, :update]
+        resources :models, on: :member, only: [:index, :create]
       end
+      resources :models, only: [:index, :update]
     end
   end
 end

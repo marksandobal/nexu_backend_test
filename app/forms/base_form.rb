@@ -11,7 +11,7 @@ class BaseForm
   end
 
   def find_model
-    @model = brand.models.find(model_id)
+    @model = Model.find(model_id)
 
   rescue ActiveRecord::RecordNotFound => error
     raise ModelException.new("Couldn't find Model with 'id'=#{model_id}", 404)

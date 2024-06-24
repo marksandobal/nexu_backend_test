@@ -3,7 +3,6 @@ class UpdateModelForm < BaseForm
 
   def update
     if valid?
-      find_brand
       find_model
       update_model
     else
