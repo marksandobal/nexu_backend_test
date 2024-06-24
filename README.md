@@ -1,4 +1,4 @@
-# Backedn Nexu Test Project
+# Backend Nexu Test Project
 
 ## Installation
 
