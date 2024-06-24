@@ -1,0 +1,3 @@
+class BrandException < BaseCustomException
+end
+

@@ -7,4 +7,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  namespace :api do
+    scope module: :v1, constraints: ApiVersionConstraint.new(version: 1) do
+      resources :brands, only: [:index, :create] do
+        resources :models, on: :member, only: [:index, :create, :update]
+      end
+    end
+  end
 end
