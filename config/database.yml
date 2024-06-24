@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: nexu_backend_test_production
-  username: nexu_backend_test
-  password: <%= ENV["NEXU_BACKEND_TEST_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
