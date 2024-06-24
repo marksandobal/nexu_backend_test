@@ -55,23 +55,25 @@ The api is open without a token or session, but the following vendor must be inc
 If you consume the endpoint from postman, you have to add the vendor in the postman headers
 
 The exercise instructions say that the path of the endpoints are as follows
-
+```
 GET    /brands
 GET    /brands/:id/models
 POST   /brands
 POST   /brands/:id/models
 PUT    /models/:id
 GET    /models
+```
 
 Since we added the versioning constraint, the endpoints looked like this:
-
+```
 GET    /api/brands
 GET    /api/brands/:id/models
 POST   /api/brands
 POST   /api/brands/:id/models
 PUT    /api/models/:id
 GET    /api/models
-                              
+```
+                           
 # Note
 
 The project was carried out with an architecture that can be readable without the need to comment on each method. The life cycle of a request works as follows.
